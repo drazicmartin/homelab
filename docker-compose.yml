@@ -1,8 +1,8 @@
 # Run with docker compose up -d
 include:
   - path:
-    - mongo.compose.yaml
-    - mongo.compose.override.yaml
+    - komodo.compose.yaml
+    - komodo.compose.override.yaml
 
 services:
   dozzle:
