@@ -1,0 +1,4 @@
+services:
+  core:
+    labels:
+      - "traefik.http.routers.core.rule=Host(`core.docker.localhost`)"
