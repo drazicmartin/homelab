@@ -1,8 +1,8 @@
 # Run with docker compose up -d
 include:
   - path:
-    - komodo.compose.yaml
-    - komodo.compose.override.yaml
+    - komodo/ferretdb.compose.yaml
+    - komodo/ferretdb.compose.override.yaml
 
 services:
   dozzle:
