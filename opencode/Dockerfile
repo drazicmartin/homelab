@@ -8,7 +8,8 @@ RUN apt update && apt install -y --no-install-recommends \
     curl \
     unzip \
     gnupg \
-    sudo
+    sudo \
+    git
 
 # install opencode globally
 RUN npm install -g opencode-ai
