@@ -1,0 +1,18 @@
+FROM node:slim
+
+RUN apt update && apt install -y --no-install-recommends \
+    # Core utilities needed for setup and the curl install script
+    wget \
+    vim \
+    ca-certificates \
+    curl \
+    unzip \
+    gnupg \
+    sudo
+
+# install opencode globally
+RUN npm install -g opencode-ai
+
+EXPOSE 4096
+
+CMD ["opencode", "web", "--port", "4096", "--hostname", "0.0.0.0"]
