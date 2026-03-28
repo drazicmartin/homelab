@@ -1,6 +1,6 @@
 services:
   nomad:
-    image: mauriceboe/nomad:latest
+    image: mauriceboe/nomad:${NOMAD_VERSION:-latest}
     container_name: nomad
     environment:
       - NODE_ENV=production
