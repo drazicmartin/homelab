@@ -1,6 +1,6 @@
 services:
   nomad:
-    image: mauriceboe/nomad:2.5.5
+    image: mauriceboe/nomad:latest
     container_name: nomad
     environment:
       - NODE_ENV=production
