@@ -17,7 +17,12 @@ RUN npm install -g opencode-ai@${OPENCODE_VERSION}
 
 ARG REPO_URL
 ARG REPO_BRANCH=main
-RUN if [ -n "$REPO_URL" ]; then git clone --branch ${REPO_BRANCH} "$REPO_URL" /workspace; fi
+
+RUN mkdir /workspace
+RUN if [ -n "$REPO_URL" ]; then \
+      cd /workspace && \
+      git clone --branch ${REPO_BRANCH} --depth 1 https://${GITHUB_TOKEN}@${REPO_URL#https://}; \
+    fi
 
 EXPOSE 4096
 
