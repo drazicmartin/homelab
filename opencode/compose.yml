@@ -4,9 +4,9 @@ services:
   opencode:
     build: .
     args:
-        REPO_URL: ${REPO_URL}
-        REPO_BRANCH: ${REPO_BRANCH}
-        GITHUB_TOKEN: ${GITHUB_TOKEN}
+      REPO_URL: ${REPO_URL}
+      REPO_BRANCH: ${REPO_BRANCH}
+      GITHUB_TOKEN: ${GITHUB_TOKEN}
     environment:
       - OPENAI_API_KEY=${OPENAI_API_KEY}
       - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
