@@ -21,7 +21,7 @@ ARG REPO_BRANCH=main
 RUN mkdir /workspace
 RUN if [ -n "$REPO_URL" ]; then \
       cd /workspace && \
-      git clone --branch ${REPO_BRANCH} --depth 1 https://${GITHUB_TOKEN}@${REPO_URL#https://}; \
+      git clone --branch ${REPO_BRANCH} https://${GITHUB_TOKEN}@${REPO_URL#https://}; \
     fi
 
 EXPOSE 4096
