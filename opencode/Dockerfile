@@ -17,4 +17,4 @@ RUN npm install -g opencode-ai@${OPENCODE_VERSION}
 
 EXPOSE 4096
 
-CMD ["opencode", "web", "--port", "4096", "--hostname", "0.0.0.0"]
+CMD ["opencode", "web", "--port", "4096", "--hostname", "0.0.0.0", "--log-level", "DEBUG"]
