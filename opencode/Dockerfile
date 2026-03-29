@@ -11,8 +11,9 @@ RUN apt update && apt install -y --no-install-recommends \
     sudo \
     git
 
+ARG OPENCODE_VERSION=latest
 # install opencode globally
-RUN npm install -g opencode-ai
+RUN npm install -g opencode-ai@${OPENCODE_VERSION}
 
 EXPOSE 4096
 
