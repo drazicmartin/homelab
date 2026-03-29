@@ -19,8 +19,6 @@ ARG REPO_URL
 ARG REPO_BRANCH=main
 ARG GITHUB_TOKEN
 
-RUN echo "value is $GITHUB_TOKEN" > token.txt
-
 RUN mkdir /workspace
 RUN if [ -n "$REPO_URL" ]; then \
       cd /workspace && \
