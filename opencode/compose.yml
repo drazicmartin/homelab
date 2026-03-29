@@ -3,8 +3,6 @@ version: "3.8"
 services:
   opencode:
     build: .
-    volumes:
-      - opencode_workspace:/workspace
     environment:
       - OPENAI_API_KEY=${OPENAI_API_KEY}
       - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
