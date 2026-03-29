@@ -17,6 +17,9 @@ RUN npm install -g opencode-ai@${OPENCODE_VERSION}
 
 ARG REPO_URL
 ARG REPO_BRANCH=main
+ARG GITHUB_TOKEN
+
+RUN echo "value is $GITHUB_TOKEN"
 
 RUN mkdir /workspace
 RUN if [ -n "$REPO_URL" ]; then \
