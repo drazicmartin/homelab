@@ -5,6 +5,7 @@ services:
     environment:
       - NODE_ENV=production
       - JWT_SECRET=${JWT_SECRET:-}
+      - ALLOWED_ORIGINS=${ALLOWED_ORIGINS:-}
       - PORT=3000
     volumes:
       - ./data:/app/data
