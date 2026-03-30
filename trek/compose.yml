@@ -5,9 +5,7 @@ services:
     environment:
       - NODE_ENV=production
       - JWT_SECRET=${JWT_SECRET:-}
-      - ALLOWED_ORIGINS=${ALLOWED_ORIGINS:-}  # Optional: restrict CORS to specific origins
       - PORT=3000
-      - FORCE_HTTPS=true
     volumes:
       - ./data:/app/data
       - ./uploads:/app/uploads
