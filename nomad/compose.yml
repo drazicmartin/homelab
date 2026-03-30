@@ -1,7 +1,7 @@
 services:
   nomad:
-    image: mauriceboe/nomad:${NOMAD_VERSION:-latest}
-    container_name: nomad
+    image: mauriceboe/trek:${TREK_VERSION:-latest}
+    container_name: trek
     environment:
       - NODE_ENV=production
       - JWT_SECRET=${JWT_SECRET:-}
