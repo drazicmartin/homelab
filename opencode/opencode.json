@@ -1,0 +1,10 @@
+{
+  "providers": {
+    "github": {
+      "token": "${GITHUB_TOKEN}"
+    }
+  },
+  "permissions": {
+    "autoApprove": ["bash", "edit", "write"]
+  }
+}
