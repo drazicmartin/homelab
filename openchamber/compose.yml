@@ -9,8 +9,6 @@ services:
         - OPENCODE_CONFIG_DIR=/home/openchamber/.config/opencode
         - OPENCHAMBER_CONFIG_DIR=/home/openchamber/.config/openchamber
     container_name: openchamber
-    ports:
-      - "8080:8080"
     extra_hosts:
       - "host.docker.internal:host-gateway"
     volumes:
