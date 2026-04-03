@@ -1,0 +1,27 @@
+services:
+  openchamber:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - OPENCODE_VERSION=${OPENCODE_VERSION:-latest}
+        - OPENCHAMBER_VERSION=${OPENCHAMBER_VERSION:-latest}
+        - OPENCODE_CONFIG_DIR=/home/openchamber/.config/opencode
+        - OPENCHAMBER_CONFIG_DIR=/home/openchamber/.config/openchamber
+    container_name: openchamber
+    ports:
+      - "8080:8080"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    volumes:
+      - ./workspaces:/home/openchamber/workspaces
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
+      interval: 1m30s
+      timeout: 30s
+      retries: 5
+      start_period: 30s
+    environment:
+      HOME: /home/openchamber
+      OPENCHAMBER_HOST: 0.0.0.0  # Bind address (default in Docker: 0.0.0.0)
+      OPENCHAMBER_UI_PASSWORD: ${OPENCHAMBER_UI_PASSWORD:?}
