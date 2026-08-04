@@ -1,11 +1,9 @@
 {
-  "permissions": {
-    "autoApprove": ["bash", "edit", "write"]
-  },
+  "$schema": "https://opencode.ai/config.json",
   "server": {
     "port": 4096,
     "hostname": "0.0.0.0",
     "mdns": true,
-    "cors": ["${SERVICE_URL_OPENCODE}"]
+    "cors": ["${env:SERVICE_URL_OPENCODE}"]
   }
 }
