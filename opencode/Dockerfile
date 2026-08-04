@@ -1,6 +1,7 @@
 FROM node:slim
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
+  wget \
   curl \
   bash \
   ca-certificates \
@@ -8,6 +9,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
   less \
   openssh-client \
   python3 \
+  gnupg \
   && rm -rf /var/lib/apt/lists/*
 
 ARG OPENCODE_VERSION=latest
