@@ -10,6 +10,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
   openssh-client \
   python3 \
   gnupg \
+  xdg-utils \
   && rm -rf /var/lib/apt/lists/*
 
 ARG OPENCODE_VERSION=latest
