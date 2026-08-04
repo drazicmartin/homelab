@@ -29,7 +29,7 @@ ARG OPENCHAMBER_VERSION=latest
 RUN bun add -g @openchamber/web@${OPENCHAMBER_VERSION}
 
 # Install oh-my-opencode and configure it
-RUN bunx oh-my-opencode install --no-tui --claude=no --openai=no --gemini=no --copilot=no --opencode-zen=no --zai-coding-plan=no --kimi-for-coding=no --skip-auth
+# RUN bunx oh-my-opencode install --no-tui --claude=no --openai=no --gemini=no --copilot=no --opencode-zen=no --zai-coding-plan=no --kimi-for-coding=no --skip-auth
 
 # Expose default port (adjust if needed)
 EXPOSE 3000
