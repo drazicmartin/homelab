@@ -32,8 +32,8 @@ RUN bun add -g @openchamber/web@${OPENCHAMBER_VERSION}
 # RUN bunx oh-my-opencode install --no-tui --claude=no --openai=no --gemini=no --copilot=no --opencode-zen=no --zai-coding-plan=no --kimi-for-coding=no --skip-auth
 
 # Expose default port (adjust if needed)
-EXPOSE 3000
+EXPOSE 3344
 
 ENV PATH="/home/openchamber/.bun/bin:${PATH}"
 
-CMD [ "openchamber", "serve", "--foreground", "--port", "3000" ]
+CMD [ "openchamber", "serve", "--foreground", "--port", "3344" ]
