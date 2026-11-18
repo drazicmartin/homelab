@@ -1,0 +1,45 @@
+services:
+  factorio:
+    image: factoriotools/factorio:stable
+    restart: unless-stopped
+    ports:
+      - "34197:34197/udp"   # game port (required)
+      # - "27015:27015/tcp" # RCON – uncomment only if you need it from outside
+    volumes:
+      - factorio-data:/factorio
+      - type: bind
+        source: ./server-settings.json
+        target: /factorio/config/server-settings.json
+        content: |
+          {
+            "name": "${SERVER_NAME}",
+            "description": "${SERVER_DESC}",
+            "tags": ["coop"],
+            "max_players": 0,
+            "visibility": { "public": false, "lan": true },
+            "username": "",
+            "token": "",
+            "game_password": "${GAME_PASSWORD}",
+            "require_user_verification": true,
+            "allow_commands": "admins-only",
+            "autosave_interval": 10,
+            "autosave_slots": 5,
+            "afk_autokick_interval": 0,
+            "auto_pause": true,
+            "only_admins_can_pause_the_game": true,
+            "autosave_only_on_server": true,
+            "non_blocking_saving": false
+          }
+    environment:
+      - PUID=${PUID:-845}
+      - PGID=${PGID:-845}
+      - DLC_SPACE_AGE=${DLC_SPACE_AGE:-true}
+      - GENERATE_NEW_SAVE=${GENERATE_NEW_SAVE:-true}
+      - LOAD_LATEST_SAVE=${LOAD_LATEST_SAVE:-true}
+      - SAVE_NAME=${SAVE_NAME:-_autosave1}
+      - PRESET=${PRESET:-}
+      - UPDATE_MODS_ON_START=${UPDATE_MODS_ON_START:-false}
+    stop_grace_period: 30s
+
+volumes:
+  factorio-data:
