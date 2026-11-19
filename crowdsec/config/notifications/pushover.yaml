@@ -1,6 +1,6 @@
 type: http
 name: pushover
-log_level: info
+log_level: debug
 group_wait: 30s
 group_threshold: 10
 format: |
