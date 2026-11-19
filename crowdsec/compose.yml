@@ -18,6 +18,12 @@ services:
             - coolify-proxy
           labels:
             type: traefik
+    healthcheck:
+      test: ["CMD", "cscli", "lapi", "status"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 60s
     networks:
       coolify:
         aliases:
@@ -36,6 +42,17 @@ services:
       CROWDSEC_PASSWORD: ${CROWDSEC_UI_PASSWORD}
     volumes:
       - crowdsec-ui-data:/app/data
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - >-
+          wget -q --spider http://127.0.0.1:3000/ ||
+          curl -fso /dev/null http://127.0.0.1:3000/ ||
+          node -e "fetch('http://127.0.0.1:3000/').then(r=>process.exit(r.status<500?0:1)).catch(()=>process.exit(1))"
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
     networks:
       - coolify
 
