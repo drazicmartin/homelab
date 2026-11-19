@@ -8,14 +8,13 @@ services:
     volumes:
       - crowdsec-data:/var/lib/crowdsec/data
       - crowdsec-config:/etc/crowdsec
-      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /data/coolify/proxy/access.log:/var/log/traefik/access.log:ro
       - type: bind
         source: ./acquis.yaml
         target: /etc/crowdsec/acquis.yaml
         content: |
-          source: docker
-          container_name:
-            - coolify-proxy
+          filenames:
+            - /var/log/traefik/access.log
           labels:
             type: traefik
     healthcheck:
