@@ -1,0 +1,19 @@
+services:
+  crowdsec-web-ui:
+    image: ghcr.io/theduffman85/crowdsec-web-ui:latest
+    restart: unless-stopped
+    environment:
+      CROWDSEC_URL: ${CROWDSEC_URL}
+      CROWDSEC_USER: ${CROWDSEC_USER}
+      CROWDSEC_PASSWORD: ${CROWDSEC_PASSWORD}
+    volumes:
+      - crowdsec-ui-data:/app/data
+    networks:
+      - coolify
+
+volumes:
+  crowdsec-ui-data:
+
+networks:
+  coolify:
+    external: true
