@@ -5,8 +5,8 @@ group_wait: 30s
 group_threshold: 10
 format: |
   {
-    "token": "${PUSHOVER_TOKEN}",
-    "user": "${PUSHOVER_USER}",
+    "token": "{{ env "PUSHOVER_TOKEN" }}",
+    "user": "{{ env "PUSHOVER_USER" }}",
     "title": "CrowdSec: IP banned",
     "message": "{{range . -}}{{range .Decisions -}}{{.Value}} banned {{.Duration}} ({{.Scenario}})\n{{end -}}{{end -}}"
   }
