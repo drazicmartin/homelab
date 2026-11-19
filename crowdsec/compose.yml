@@ -9,14 +9,9 @@ services:
       - crowdsec-data:/var/lib/crowdsec/data
       - crowdsec-config:/etc/crowdsec
       - /data/coolify/proxy/access.log:/var/log/traefik/access.log:ro
-      - type: bind
-        source: ./acquis.yaml
-        target: /etc/crowdsec/acquis.yaml
-        content: |
-          filenames:
-            - /var/log/traefik/access.log
-          labels:
-            type: traefik
+      - ./config/acquis.yaml:/etc/crowdsec/acquis.yaml:ro
+      - ./config/profiles.yaml:/etc/crowdsec/profiles.yaml:ro
+      - ./config/notifications/pushover.yaml:/etc/crowdsec/notifications/pushover.yaml:ro
     healthcheck:
       test: ["CMD", "cscli", "lapi", "status"]
       interval: 30s
