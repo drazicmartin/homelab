@@ -1,0 +1,16 @@
+type: http
+name: pushover
+log_level: info
+group_wait: 30s
+group_threshold: 10
+format: |
+  {
+    "token": "${PUSHOVER_TOKEN}",
+    "user": "${PUSHOVER_USER}",
+    "title": "CrowdSec: IP banned",
+    "message": "{{range . -}}{{range .Decisions -}}{{.Value}} banned {{.Duration}} ({{.Scenario}})\n{{end -}}{{end -}}"
+  }
+url: https://api.pushover.net/1/messages.json
+method: POST
+headers:
+  Content-Type: application/json
