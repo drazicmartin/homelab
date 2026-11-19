@@ -5,6 +5,8 @@ services:
     environment:
       COLLECTIONS: "crowdsecurity/traefik crowdsecurity/http-cve crowdsecurity/base-http-scenarios"
       BOUNCER_KEY_TRAEFIK: ${BOUNCER_KEY_TRAEFIK}   # registers the Traefik bouncer automatically
+      PUSHOVER_TOKEN: ${PUSHOVER_TOKEN:?}
+      PUSHOVER_USER: ${PUSHOVER_USER:?}
     volumes:
       - crowdsec-data:/var/lib/crowdsec/data
       - crowdsec-config:/etc/crowdsec
