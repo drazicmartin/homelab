@@ -26,6 +26,8 @@ services:
   crowdsec-web-ui:
     image: ghcr.io/theduffman85/crowdsec-web-ui:latest
     restart: unless-stopped
+    expose:
+      - "3000"
     depends_on:
       - crowdsec
     environment:
