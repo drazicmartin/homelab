@@ -34,20 +34,21 @@ services:
     expose:
       - "3000"
     depends_on:
-      - crowdsec
+      crowdsec:
+        condition: service_healthy
     environment:
-      CROWDSEC_URL: http://crowdsec:8080
-      CROWDSEC_USER: crowdsec-web-ui
-      CROWDSEC_PASSWORD: ${CROWDSEC_UI_PASSWORD}
+      CONFIG_INSTANCE_LAPI_URL: http://crowdsec:8080
+      CONFIG_INSTANCE_LAPI_AUTH_USERNAME: crowdsec-web-ui
+      CONFIG_INSTANCE_LAPI_AUTH_PASSWORD: ${CROWDSEC_UI_PASSWORD}
     volumes:
       - crowdsec-ui-data:/app/data
     healthcheck:
       test:
         - CMD-SHELL
         - >-
-          wget -q --spider http://127.0.0.1:3000/ ||
-          curl -fso /dev/null http://127.0.0.1:3000/ ||
-          node -e "fetch('http://127.0.0.1:3000/').then(r=>process.exit(r.status<500?0:1)).catch(()=>process.exit(1))"
+          wget -q --spider http://127.0.0.1:3000/api/health ||
+          curl -fso /dev/null http://127.0.0.1:3000/api/health ||
+          node -e "fetch('http://127.0.0.1:3000/api/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"
       interval: 30s
       timeout: 10s
       retries: 3
