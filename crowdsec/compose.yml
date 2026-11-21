@@ -3,7 +3,7 @@ services:
     image: crowdsecurity/crowdsec:latest
     restart: unless-stopped
     environment:
-      COLLECTIONS: "crowdsecurity/traefik crowdsecurity/http-cve crowdsecurity/base-http-scenarios crowdsecurity/whitelists crowdsecurity/appsec-virtual-patching crowdsecurity/appsec-generic-rules"
+      COLLECTIONS: "crowdsecurity/traefik crowdsecurity/http-cve crowdsecurity/base-http-scenarios crowdsecurity/appsec-virtual-patching crowdsecurity/appsec-generic-rules"
       BOUNCER_KEY_TRAEFIK: ${BOUNCER_KEY_TRAEFIK}   # registers the Traefik bouncer automatically
       PUSHOVER_TOKEN: ${PUSHOVER_TOKEN:?}
       PUSHOVER_USER: ${PUSHOVER_USER:?}
