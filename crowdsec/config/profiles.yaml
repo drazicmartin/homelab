@@ -1,3 +1,10 @@
+name: appsec_notify
+filters:
+  - Alert.GetScenario() startsWith "crowdsecurity/vpatch-" || Alert.GetScenario() startsWith "crowdsecurity/generic-" || Alert.GetScenario() == "crowdsecurity/appsec-vpatch"
+notifications:
+  - pushover
+on_success: continue
+---
 name: default_ip_remediation
 filters:
   - Alert.Remediation == true && Alert.GetScope() == "Ip"
@@ -5,8 +12,6 @@ decisions:
   - type: ban
     duration: 4h
 duration_expr: Sprintf('%dh', (GetDecisionsCount(Alert.GetValue()) + 1) * 4)
-notifications:
-  - pushover
 on_success: break
 ---
 name: default_range_remediation
