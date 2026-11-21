@@ -7,8 +7,8 @@ format: |
   {
     "token": "{{ env "PUSHOVER_TOKEN" }}",
     "user": "{{ env "PUSHOVER_USER" }}",
-    "title": "CrowdSec: IP banned",
-    "message": "{{range . -}}{{range .Decisions -}}{{.Value}} banned {{.Duration}} ({{.Scenario}})\n{{end -}}{{end -}}"
+    "title": "CrowdSec AppSec block",
+    "message": "{{range . -}}{{.Source.Value}} → {{.Scenario}}\n{{end -}}"
   }
 url: https://api.pushover.net/1/messages.json
 method: POST
