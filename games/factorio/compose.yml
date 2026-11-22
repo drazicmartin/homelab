@@ -32,9 +32,6 @@ services:
           }
     environment:
       - VERSION=${VERSION:-stable}
-      - SERVER_NAME=${SERVER_NAME:-Factorio}
-      - SERVER_DESC=${SERVER_DESC:-}
-      - GAME_PASSWORD=${GAME_PASSWORD}
       - PUID=${PUID:-845}
       - PGID=${PGID:-845}
       - DLC_SPACE_AGE=${DLC_SPACE_AGE:-false}
