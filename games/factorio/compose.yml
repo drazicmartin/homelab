@@ -12,14 +12,14 @@ services:
         target: /factorio/config/server-settings.json
         content: |
           {
-            "name": "${SERVER_NAME}",
-            "description": "${SERVER_DESC}",
+            "name": "SERVER_NAME",
+            "description": "SERVER_DESC",
             "tags": ["coop"],
             "max_players": 0,
             "visibility": { "public": false, "lan": true },
             "username": "",
             "token": "",
-            "game_password": "${GAME_PASSWORD}",
+            "game_password": "GAME_PASSWORD",
             "require_user_verification": true,
             "allow_commands": "admins-only",
             "autosave_interval": 10,
