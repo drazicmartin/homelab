@@ -8,18 +8,6 @@ services:
     volumes:
       - factorio-data:/factorio
       - type: bind
-        source: ./mod-list.json
-        target: /factorio/mods/mod-list.json
-        content: |
-          {
-            "mods": [
-              { "name": "base", "enabled": true },
-              { "name": "elevated-rails", "enabled": false },
-              { "name": "quality", "enabled": false },
-              { "name": "space-age", "enabled": false }
-            ]
-          }
-      - type: bind
         source: ./server-settings.json
         target: /factorio/config/server-settings.json
         content: |
@@ -43,12 +31,16 @@ services:
             "non_blocking_saving": false
           }
     environment:
+      - VERSION=${VERSION:-stable}
+      - SERVER_NAME=${SERVER_NAME:-Factorio}
+      - SERVER_DESC=${SERVER_DESC:-}
+      - GAME_PASSWORD=${GAME_PASSWORD}
       - PUID=${PUID:-845}
       - PGID=${PGID:-845}
-      - DLC_SPACE_AGE=${DLC_SPACE_AGE:-true}
+      - DLC_SPACE_AGE=${DLC_SPACE_AGE:-false}
       - GENERATE_NEW_SAVE=${GENERATE_NEW_SAVE:-true}
-      - LOAD_LATEST_SAVE=${LOAD_LATEST_SAVE:-true}
-      - SAVE_NAME=${SAVE_NAME:-_autosave1}
+      - LOAD_LATEST_SAVE=${LOAD_LATEST_SAVE:-false}
+      - SAVE_NAME=${SAVE_NAME:-vanilla}
       - PRESET=${PRESET:-}
       - UPDATE_MODS_ON_START=${UPDATE_MODS_ON_START:-false}
     stop_grace_period: 30s
