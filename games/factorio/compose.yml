@@ -5,6 +5,12 @@ services:
     ports:
       - "34197:34197/udp"   # game port (required)
       # - "27015:27015/tcp" # RCON – uncomment only if you need it from outside
+    healthcheck:
+      test: ["CMD", "bash", "-c", "</dev/tcp/127.0.0.1/27015"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 180s
     volumes:
       - factorio-data:/factorio
       - type: bind
