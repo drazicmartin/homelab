@@ -14,6 +14,7 @@ services:
       - ./config/acquis.yaml:/etc/crowdsec/acquis.yaml:ro
       - ./config/profiles.yaml:/etc/crowdsec/profiles.yaml:ro
       - ./config/notifications/pushover.yaml:/etc/crowdsec/notifications/pushover.yaml:ro
+      - ./config/config.yaml.local:/etc/crowdsec/config.yaml.local:ro
     healthcheck:
       test: ["CMD", "cscli", "lapi", "status"]
       interval: 30s
@@ -37,6 +38,7 @@ services:
       CONFIG_INSTANCE_LAPI_URL: http://crowdsec:8080
       CONFIG_INSTANCE_LAPI_AUTH_USERNAME: crowdsec-web-ui
       CONFIG_INSTANCE_LAPI_AUTH_PASSWORD: ${CROWDSEC_UI_PASSWORD}
+      CONFIG_INSTANCE_METRICS_URL: ${CROWDSEC_METRICS_URL:-http://crowdsec:6060/metrics}
     volumes:
       - crowdsec-ui-data:/app/data
     healthcheck:
