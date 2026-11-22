@@ -1,6 +1,6 @@
 services:
   factorio:
-    image: factoriotools/factorio:stable
+    image: factoriotools/factorio:${VERSION:-stable}
     restart: unless-stopped
     ports:
       - "34197:34197/udp"   # game port (required)
