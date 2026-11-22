@@ -7,7 +7,18 @@ services:
       # - "27015:27015/tcp" # RCON – uncomment only if you need it from outside
     volumes:
       - factorio-data:/factorio
-      - ./mods:/factorio/mods
+      - type: bind
+        source: ./mod-list.json
+        target: /factorio/mods/mod-list.json
+        content: |
+          {
+            "mods": [
+              { "name": "base", "enabled": true },
+              { "name": "elevated-rails", "enabled": false },
+              { "name": "quality", "enabled": false },
+              { "name": "space-age", "enabled": false }
+            ]
+          }
       - type: bind
         source: ./server-settings.json
         target: /factorio/config/server-settings.json
